@@ -1,7 +1,7 @@
 import pygame
 import string #losowe literki
 string.ascii_letters
-import random #gdzie literki
+import random #gdzie literki wyswietlane
 import time #score
 
 pygame.display.set_caption('Flappy osu keyboard bird??')
@@ -18,14 +18,7 @@ base_font = pygame.font.Font(None, 32)
 user_text = '' 
 input_rect = pygame.Rect(200, 200, 140, 32) 
 
-
-# color_active stores color(lightskyblue3) which gets active when input box is clicked by user 
-color_active = pygame.Color('lightskyblue3') 
-  
-# color_passive store color(chartreuse4) which is color of input box. 
-color_passive = pygame.Color('chartreuse4') 
-color = color_passive 
-
+color = pygame.Color('chartreuse4') 
 
 jump = False #mechanika skakania
 blokada = False #mechanika blokady skoku (bo nie wiedzialem jak zrobic zeby nie trza bylo trzymac)
@@ -33,8 +26,7 @@ klawisz_odblk = 'a'
 start = False #czy ma zaczac sie frajda :)
 score = -1
 
-pygame.mouse.set_visible(0)
-
+pygame.mouse.set_visible(0) #widocznosc kursora
 
 #tekst
 font = pygame.font.Font('freesansbold.ttf', 42)
@@ -64,7 +56,6 @@ while running:
 
     #tlo
     screen.fill("light green")
-        
     
     #rury
     r1 = pygame.draw.rect(screen, color, pygame.Rect(300, 500, 120, 200))
@@ -77,7 +68,7 @@ while running:
 
     #opadanie
     if(jump != True and start == True):
-        player_pos.y += 20 * dt    
+        player_pos.y += 40 * dt    
 
     #skakanie
     if(jump == True):
@@ -112,7 +103,7 @@ while running:
     #flip() the display to put your work on screen        
     pygame.display.flip()
 
-    dt = clock.tick(60) / 1000  #fps limit -> 60?
+    dt = clock.tick(60) / 1000  #fps limit -> 60
 
 #score fix
 score = str(score)
